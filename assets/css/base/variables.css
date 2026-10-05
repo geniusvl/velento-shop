@@ -1,0 +1,77 @@
+/*
+ * Velento Shop — Design Tokens
+ * Names here MUST match what layout/component CSS files consume
+ * (e.g. layout/header.css reads var(--bg), var(--text), var(--accent)...).
+ * Previously these were named --bg-color/--text-color/etc. while every
+ * consumer expected --bg/--text/--accent, so nothing was actually
+ * being styled. Keep the short names below as the single source of truth.
+ */
+:root {
+    /* Colors — default (light) mode */
+    --bg: #FAFAFA;
+    --text: #0A0A0A;
+    --primary: #0A0A0A;
+    --secondary: #666666;
+    --border: #e5e5e5;
+    --accent: #C9A85B; /* gold accent */
+
+    /* Radius */
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+
+    /* Transition */
+    --transition: .3s ease-in-out;
+    --transition-fast: .15s ease-in-out;
+
+    /* Spacing scale — 4px base unit, used across all component CSS
+       (buttons, forms, cards, modal, slider) so every page shares the
+       same rhythm instead of each file inventing its own pixel values. */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+
+    /* Typography scale */
+    --text-xs: .75rem;    /* 12px — helper/error text */
+    --text-sm: .875rem;   /* 14px — labels, meta */
+    --text-base: 1rem;    /* 16px — body */
+    --text-md: 1.125rem;  /* 18px */
+    --text-lg: 1.375rem;  /* 22px — card/section titles */
+    --text-xl: 1.75rem;   /* 28px */
+    --text-2xl: 2.25rem;  /* 36px — page/hero titles */
+    --leading-tight: 1.25;
+    --leading-normal: 1.6;
+
+    /* Elevation — soft shadows fit a light, luxury surface better than
+       hard/dark ones; dark mode overrides to a lighter-alpha version below. */
+    --shadow-sm: 0 1px 3px rgba(10, 10, 10, .06);
+    --shadow-md: 0 8px 24px rgba(10, 10, 10, .08);
+    --shadow-lg: 0 16px 40px rgba(10, 10, 10, .14);
+
+    /* Z-index scale — keeps stacking order intentional as more overlays
+       (modal, mobile nav, search, toasts) get added. */
+    --z-header: 999;
+    --z-overlay: 1000;
+    --z-modal: 1100;
+    --z-toast: 1200;
+}
+
+[data-theme="dark"] {
+    /* Colors — dark (luxury) mode: black + olive green identity */
+    --bg: #0A0A0A;
+    --text: #FAFAFA;
+    --primary: #FAFAFA;
+    --secondary: #bdbdbd;
+    --border: #2d2d2d;
+    --accent: #D4B872; /* brighter gold for contrast on black */
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .35);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, .45);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, .55);
+}

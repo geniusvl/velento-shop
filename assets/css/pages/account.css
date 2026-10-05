@@ -1,0 +1,338 @@
+/**
+ * Velento Shop — My Account.
+ * RTL-first, quiet-luxury account navigation with a restrained accent.
+ */
+
+.velento-account {
+    padding: 52px 0 110px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.velento-account__container {
+    width: min(1180px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+.velento-account__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
+    gap: 34px;
+    align-items: start;
+}
+
+.velento-account__sidebar,
+.velento-account__content {
+    min-width: 0;
+}
+
+.velento-account-nav {
+    position: sticky;
+    top: 104px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    box-shadow: var(--shadow-sm);
+}
+
+.velento-account-nav__profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding-bottom: 18px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.velento-account-nav__avatar {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.velento-account-nav__who {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.velento-account-nav__hello {
+    color: var(--secondary);
+    font-size: var(--text-xs);
+}
+
+.velento-account-nav__username {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    color: var(--text);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.velento-account-nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.velento-account-nav__item {
+    min-width: 0;
+}
+
+.velento-account-nav__item a {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 44px;
+    padding: 9px 11px;
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    text-decoration: none;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.velento-account-nav__item a:hover,
+.velento-account-nav__item a:focus-visible {
+    background: color-mix(in srgb, var(--border) 55%, transparent);
+    outline: none;
+}
+
+.velento-account-nav__item.is-active a {
+    background: color-mix(in srgb, var(--accent) 11%, transparent);
+    color: var(--text);
+}
+
+.velento-account-nav__item.is-active a svg {
+    color: var(--accent);
+}
+
+.velento-account-nav__item a svg {
+    flex: 0 0 18px;
+    color: var(--secondary);
+}
+
+.velento-account-nav__item--logout {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+.velento-account-nav__item--logout a {
+    color: #a55a50;
+}
+
+.velento-account-nav__item--logout a:hover {
+    background: color-mix(in srgb, #a55a50 8%, transparent);
+}
+
+.velento-account-card {
+    min-width: 0;
+    padding: clamp(24px, 4vw, 38px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    box-shadow: var(--shadow-sm);
+}
+
+.velento-account-card__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    min-width: 0;
+}
+
+.velento-account-card__intro {
+    min-width: 0;
+}
+
+.velento-account-card__eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--accent);
+    font-size: var(--text-xs);
+    font-weight: 700;
+}
+
+.velento-account-card__title {
+    max-width: 100%;
+    margin: 0 !important;
+    color: var(--text);
+    font-size: clamp(24px, 3vw, 34px) !important;
+    font-weight: 750 !important;
+    overflow-wrap: anywhere;
+}
+
+.velento-account-card__username {
+    color: var(--text);
+}
+
+.velento-account-card__meta {
+    max-width: 100%;
+    margin: 7px 0 0;
+    overflow-wrap: anywhere;
+    color: var(--secondary);
+    font-size: var(--text-xs);
+    text-align: right;
+}
+
+.velento-account-card__logout {
+    flex: 0 0 auto;
+    color: #a55a50;
+    border-color: color-mix(in srgb, #a55a50 65%, var(--border));
+}
+
+.velento-account-card__logout:hover {
+    background: #a55a50;
+    border-color: #a55a50;
+    color: #fff;
+}
+
+.velento-account-card__hint {
+    margin: 22px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: var(--text-sm);
+    line-height: 1.9;
+}
+
+/* WooCommerce endpoint content */
+
+.velento-account__content > * + * {
+    margin-top: 24px;
+}
+
+.velento-account__content .woocommerce-MyAccount-content {
+    min-width: 0;
+    color: var(--text);
+}
+
+.velento-account__content .woocommerce-info,
+.velento-account__content .woocommerce-message,
+.velento-account__content .woocommerce-error {
+    width: 100%;
+    margin: 0 0 20px !important;
+}
+
+.velento-account__content table.shop_table {
+    width: 100%;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.velento-account__content table.shop_table th,
+.velento-account__content table.shop_table td {
+    padding: 12px 10px;
+    border-color: var(--border);
+}
+
+.velento-account__content a {
+    color: inherit;
+}
+
+.velento-account__content a:hover {
+    color: var(--accent);
+}
+
+.velento-account__content .button,
+.velento-account__content button,
+.velento-account__content input[type="submit"] {
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    font: inherit;
+}
+
+.velento-account__content .form-row {
+    max-width: 100%;
+}
+
+.velento-account__content input,
+.velento-account__content textarea,
+.velento-account__content select {
+    max-width: 100%;
+    border-color: var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text);
+}
+
+@media (max-width: 860px) {
+    .velento-account {
+        padding-top: 34px;
+    }
+
+    .velento-account__container {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .velento-account__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .velento-account-nav {
+        position: static;
+    }
+
+    .velento-account-nav__list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .velento-account-nav__item--logout {
+        margin-top: 3px;
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .velento-account-card__head {
+        flex-direction: column;
+    }
+
+    .velento-account-card__logout {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .velento-account {
+        padding-bottom: 70px;
+    }
+
+    .velento-account-nav {
+        padding: 16px;
+    }
+
+    .velento-account-nav__list {
+        grid-template-columns: 1fr;
+    }
+
+    .velento-account-card {
+        padding: 22px 18px;
+    }
+
+    .velento-account-card__title {
+        font-size: 24px !important;
+    }
+
+    .velento-account__content table.shop_table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

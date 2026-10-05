@@ -1,0 +1,531 @@
+/* ==========================================================================
+   Site Header — Velento Shop
+   Layout is forced to a fixed physical order (icons / logo / nav) via
+   `direction: ltr` on the grid, independent of the page's own RTL
+   direction, so it always renders: actions on the LEFT, logo CENTERED,
+   nav on the RIGHT — exactly as specified, regardless of locale.
+   ========================================================================== */
+
+/* ---------- Announcement bar (template-parts/header/announcement.php) ---------- */
+
+.announcement-bar {
+    background: var(--primary);
+    color: var(--bg);
+}
+
+.announcement-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) 12px;
+    text-align: center;
+}
+
+.announcement-bar-text {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: inherit;
+    text-decoration: none;
+}
+
+a.announcement-bar-text:hover {
+    color: var(--accent);
+}
+
+.site-header {
+    width: 100%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    direction: ltr;
+    min-height: 100px;
+    gap: clamp(16px, 4vw, 56px);
+    padding-inline: 12px;
+}
+
+/* ---------- Branding / logo ---------- */
+
+.site-branding {
+    justify-self: center;
+}
+
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-header .site-branding .site-logo img.logo-img,
+.woocommerce .site-branding .logo-img,
+.woocommerce-page .site-branding .logo-img {
+    height: 64px !important;
+    width: auto !important;
+    max-width: none;
+    transition: opacity var(--transition);
+}
+
+.logo-img.logo-dark {
+    display: none;
+}
+
+[data-theme="dark"] .logo-img.logo-light {
+    display: none;
+}
+
+[data-theme="dark"] .logo-img.logo-dark {
+    display: block;
+}
+
+/* ---------- Primary navigation ---------- */
+
+.main-navigation {
+    justify-self: end;
+    direction: rtl; /* Persian labels read right-to-left within the block */
+    min-width: 0; /* let the grid track shrink instead of forcing overflow */
+}
+
+.primary-menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: clamp(10px, 1.8vw, 22px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-menu .menu-item {
+    position: relative;
+}
+
+.primary-menu .menu-item + .menu-item::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--accent);
+    opacity: .55;
+}
+
+.primary-menu .menu-item > a {
+    position: relative;
+    display: inline-block;
+    padding: 8px 1px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: "Estedad", sans-serif;
+    font-weight: 500;
+    font-size: 0.98rem;
+    letter-spacing: .01em;
+    white-space: nowrap;
+    transition: color .3s ease-in-out;
+}
+
+.primary-menu .menu-item > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 1.5px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.primary-menu .menu-item > a:hover,
+.primary-menu .menu-item > a:focus-visible {
+    color: var(--accent);
+}
+
+.primary-menu .menu-item > a:hover::after,
+.primary-menu .menu-item > a:focus-visible::after,
+.primary-menu .menu-item.current-menu-item > a::after {
+    transform: scaleX(1);
+}
+
+.primary-menu .menu-item.current-menu-item > a {
+    color: var(--accent);
+}
+
+/* ---------- Action icons (search / theme / account / cart) ---------- */
+
+.header-actions {
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.header-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Estedad", sans-serif;
+    transition: color .3s ease-in-out, background-color .3s ease-in-out, transform .3s ease-in-out;
+}
+
+.header-icon:hover,
+.header-icon:focus-visible {
+    color: var(--accent);
+    background: rgba(201, 168, 91, .14);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    transform: translateY(-1px);
+}
+
+.header-icon svg {
+    display: block;
+}
+
+.nav-toggle {
+    display: none; /* revealed on small screens, see media query below */
+}
+
+.nav-toggle svg line {
+    transform-origin: 12px 12px;
+    transition: transform .35s cubic-bezier(.4, 0, .2, 1), opacity .25s ease;
+}
+
+.site-header.nav-open .nav-toggle {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.site-header.nav-open .nav-toggle svg line:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+}
+
+.site-header.nav-open .nav-toggle svg line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.site-header.nav-open .nav-toggle svg line:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
+}
+
+/* Theme toggle: show the icon of the mode you're switching TO */
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+    display: none;
+}
+
+/* Cart badge */
+.cart-link {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: 2px;
+    inset-inline-end: 0;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 3px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: center;
+}
+
+.cart-count:empty {
+    display: none;
+}
+
+/* ==========================================================================
+   Search overlay — expands under the header, dims/blurs the rest of the
+   page via .site-overlay (toggled on <body> as .search-active).
+   ========================================================================== */
+
+.search-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: max-height .4s cubic-bezier(.4, 0, .2, 1), opacity .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+/* Tall enough for the search form plus live results / recent searches /
+   recently viewed below it; the inner .search-overlay-body (search-results.css)
+   scrolls on its own once content exceeds this, so the outer element can
+   keep max-height for the open/close transition above. */
+.search-overlay.is-open {
+    max-height: min(78vh, 680px);
+    opacity: 1;
+    border-color: var(--border);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, .18);
+}
+
+.search-overlay-form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 26px 24px;
+}
+
+.search-overlay-icon {
+    flex-shrink: 0;
+    color: var(--secondary);
+}
+
+.search-overlay-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    padding: 8px 2px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color .3s ease-in-out;
+}
+
+.search-overlay-input:focus {
+    border-color: var(--accent);
+}
+
+.search-overlay-input::placeholder {
+    color: var(--secondary);
+}
+
+.search-overlay-close {
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    padding: 6px;
+    transition: color .3s ease-in-out, transform .3s ease-in-out;
+}
+
+.search-overlay-close:hover {
+    color: var(--accent);
+    transform: rotate(90deg);
+}
+
+/* Full-page dim + blur backdrop while the search overlay is open */
+.site-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .38);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .20s ease, visibility .20s ease;
+    z-index: 900; /* below .site-header (999), above page content */
+}
+
+body.search-active .site-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ==========================================================================
+   Responsive — collapse nav into a hamburger-triggered dropdown
+   ========================================================================== */
+
+@media (max-width: 860px) {
+    .nav-toggle {
+        display: inline-flex;
+        order: -1;
+    }
+
+    /* Icons/logo no longer share a 3-column grid with an empty (but
+       still space-consuming) nav track once the nav collapses to an
+       absolutely-positioned dropdown — that empty track was pushing
+       the "centered" logo visually into the icon cluster. A simple
+       2-item flex (actions vs. logo) keeps icons pinned to the
+       physical left and the logo pinned to the physical right, with
+       nothing to collide with. */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 86px;
+        gap: 10px;
+        padding-inline: 10px;
+    }
+
+    .site-branding {
+        justify-self: auto;
+    }
+
+    .site-header .site-branding .site-logo img.logo-img,
+    .woocommerce .site-branding .logo-img,
+    .woocommerce-page .site-branding .logo-img {
+        height: 44px !important;
+    }
+
+    /* Hamburger trigger: bigger than the other icons and gets a
+       filled accent state + line->X morph (defined above) while open,
+       so it reads clearly as the primary mobile action. */
+    .nav-toggle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nav-toggle svg {
+        width: 27px;
+        height: 27px;
+    }
+
+    .main-navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        background: var(--bg);
+        border-bottom: 1px solid transparent;
+        border-radius: 0 0 22px 22px;
+        direction: rtl;
+        transform: translateY(-10px);
+        transition: max-height .4s cubic-bezier(.4, 0, .2, 1), opacity .3s ease, transform .35s cubic-bezier(.4, 0, .2, 1), border-color .3s ease;
+    }
+
+    .site-header.nav-open .main-navigation {
+        max-height: 360px;
+        opacity: 1;
+        transform: translateY(0);
+        border-color: var(--border);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .22);
+    }
+
+    .primary-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 22px 24px;
+    }
+
+    .primary-menu .menu-item {
+        border-bottom: 1px solid var(--border);
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity .35s ease, transform .35s ease;
+    }
+
+    .primary-menu .menu-item:last-child {
+        border-bottom: none;
+    }
+
+    .site-header.nav-open .primary-menu .menu-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .primary-menu .menu-item:nth-child(1) { transition-delay: .06s; }
+    .primary-menu .menu-item:nth-child(2) { transition-delay: .11s; }
+    .primary-menu .menu-item:nth-child(3) { transition-delay: .16s; }
+    .primary-menu .menu-item:nth-child(4) { transition-delay: .21s; }
+    .primary-menu .menu-item:nth-child(5) { transition-delay: .26s; }
+    .primary-menu .menu-item:nth-child(6) { transition-delay: .31s; }
+
+    .primary-menu .menu-item > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 2px;
+        font-size: 1.02rem;
+    }
+
+    .primary-menu .menu-item > a::after {
+        display: none;
+    }
+
+    .primary-menu .menu-item + .menu-item::before {
+        display: none;
+    }
+
+    .primary-menu .menu-item.current-menu-item > a {
+        color: var(--accent);
+    }
+
+    .search-overlay-form {
+        padding: 20px 16px;
+    }
+}
+
+/* Dim backdrop behind the open mobile menu, matching the search/cart/
+   login overlays for a consistent feel. */
+body.nav-active .site-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.nav-active {
+    overflow: hidden;
+}
+
+@media (max-width: 420px) {
+    .header-actions {
+        gap: 4px;
+    }
+
+    .header-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-toggle {
+        width: 46px;
+        height: 46px;
+    }
+
+    .nav-toggle svg {
+        width: 24px;
+        height: 24px;
+    }
+}

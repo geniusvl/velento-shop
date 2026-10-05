@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Icons — sizing utilities + a reusable round icon-button, for places
+   outside the header (product card wishlist icon, shop filter toggle,
+   account sidebar icons) that need the same look header.css already
+   gives `.header-icon` without duplicating that component's CSS.
+   ========================================================================== */
+
+.icon {
+    display: inline-block;
+    line-height: 0;
+    flex-shrink: 0;
+}
+
+.icon-xs svg { width: 14px; height: 14px; }
+.icon-sm svg { width: 18px; height: 18px; }
+.icon-md svg { width: 22px; height: 22px; }
+.icon-lg svg { width: 28px; height: 28px; }
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast),
+                border-color var(--transition-fast);
+}
+
+.icon-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.icon-btn.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0A0A0A;
+}
+
+.icon-btn--sm {
+    width: 32px;
+    height: 32px;
+}
+
+/* Small numeric badge, e.g. wishlist count on a product-card heart icon */
+.icon-badge {
+    position: relative;
+}
+
+.icon-badge::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -4px;
+    inset-inline-end: -4px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 3px;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    color: #0A0A0A;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+}

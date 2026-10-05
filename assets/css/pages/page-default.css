@@ -1,0 +1,115 @@
+/**
+ * Generic fallback template (page.php) — used by any Page that doesn't
+ * have a dedicated template of its own (About, Contact, custom pages,
+ * and WooCommerce's "My Account" page before its own account.css takes
+ * over the inner layout). Kept minimal on purpose: just enough spacing
+ * and typography so a plain Page never looks unstyled.
+ */
+
+.page-default__container {
+    padding: 48px 0 96px;
+}
+
+.page-default__title {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-tight);
+    margin: 0 0 var(--space-6);
+    text-align: center;
+}
+
+.page-default__thumbnail {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-6);
+}
+
+.page-default__thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.page-default__content {
+    max-width: 760px;
+    margin-inline: auto;
+    line-height: var(--leading-normal);
+    color: var(--text);
+}
+
+.page-default__content > * + * {
+    margin-top: var(--space-4);
+}
+
+
+/* Generic fallback states and WordPress comments. */
+.velento-error-page .page-default__article {
+    min-height: 52vh;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 12px;
+}
+
+.page-default__eyebrow {
+    color: var(--accent);
+    font-size: var(--text-xs);
+    font-weight: 700;
+}
+
+.velento-error-page .page-default__content {
+    max-width: 560px;
+    color: var(--secondary);
+}
+
+.v-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.comments-area {
+    margin-top: 44px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.comments-title {
+    margin-bottom: 22px !important;
+}
+
+.comment-list {
+    padding-inline-start: 22px;
+}
+
+.comment-list .comment {
+    margin-bottom: 18px;
+}
+
+.comment-list .comment-body {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.comment-form-comment textarea,
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text);
+    padding: 10px 12px;
+}
+
+.comment-form .submit {
+    border: 1px solid var(--text);
+    border-radius: var(--radius-sm);
+    background: var(--text);
+    color: var(--bg);
+    padding: 10px 18px;
+    font: inherit;
+    cursor: pointer;
+}

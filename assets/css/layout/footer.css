@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Site Footer
+   Uses the same "inverted" dark band as the newsletter section right
+   above it (background: var(--primary), text: var(--bg)) so the two
+   sections read as one continuous dark footer block in light mode,
+   and stay legible in dark mode too.
+   ========================================================================== */
+
+.site-footer {
+    background: var(--primary);
+    color: var(--bg);
+    padding-top: 64px;
+    transition: background var(--transition), color var(--transition);
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 56px;
+}
+
+.footer-col-title {
+    color: var(--bg);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* ---------- Brand column ---------- */
+
+.footer-col-brand .footer-logo {
+    display: inline-flex;
+    margin-bottom: 18px;
+}
+
+.footer-col-brand .logo-img {
+    height: 48px;
+    width: auto;
+}
+
+/* Footer always sits on the dark "inverted" band, so always show the
+   light-on-dark logo variant regardless of the site's own light/dark
+   theme (unlike the header, which swaps logos with the theme). */
+.footer-col-brand .logo-img.logo-dark {
+    display: block;
+}
+
+.footer-col-brand .logo-img.logo-light {
+    display: none;
+}
+
+.footer-about {
+    color: var(--bg);
+    opacity: .7;
+    font-size: .9rem;
+    line-height: 1.9;
+    max-width: 320px;
+    margin-bottom: 22px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 250, 250, .2);
+    border: 1px solid color-mix(in srgb, var(--bg) 20%, transparent);
+    color: var(--bg);
+    text-decoration: none;
+    transition: color var(--transition), border-color var(--transition), background-color var(--transition);
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(201, 168, 91, .12);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* ---------- Links / service / contact columns ---------- */
+
+.footer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-menu a {
+    color: var(--bg);
+    opacity: .72;
+    text-decoration: none;
+    font-size: .9rem;
+    transition: opacity var(--transition), color var(--transition);
+}
+
+.footer-menu a:hover,
+.footer-menu a:focus-visible {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.footer-contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--bg);
+    opacity: .8;
+    font-size: .88rem;
+}
+
+.footer-contact-list svg {
+    flex-shrink: 0;
+    color: var(--accent);
+    opacity: 1;
+}
+
+/* ---------- Bottom bar ---------- */
+
+.footer-bottom {
+    border-top: 1px solid rgba(250, 250, 250, .12);
+    border-top: 1px solid color-mix(in srgb, var(--bg) 12%, transparent);
+    padding: 22px 0;
+}
+
+.footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-copyright,
+.footer-payment-note {
+    color: var(--bg);
+    opacity: .6;
+    font-size: .82rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 980px) {
+    .footer-columns {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 44px;
+    }
+}
+
+@media (max-width: 560px) {
+    .site-footer {
+        padding-top: 48px;
+    }
+
+    .footer-columns {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-col-brand .footer-about {
+        margin-inline: auto;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .footer-bottom-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}

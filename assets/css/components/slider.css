@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Slider — generic reusable slider shell (arrows + dots + track), for
+   future spots that need one but aren't the home-page hero/carousel
+   (which already have their own dedicated, working styles in
+   pages/home.css — this file does NOT duplicate or touch those).
+   Intended next use: product-gallery thumbnails, testimonials.
+   ========================================================================== */
+
+.slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.slider__track {
+    display: flex;
+    transition: transform var(--transition);
+    will-change: transform;
+}
+
+.slider__item {
+    flex: 0 0 100%;
+    min-width: 0;
+}
+
+.slider__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    color: var(--text);
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.slider__arrow:hover {
+    background: var(--accent);
+    color: #0A0A0A;
+    border-color: var(--accent);
+}
+
+.slider__arrow--prev {
+    inset-inline-start: var(--space-3);
+}
+
+.slider__arrow--next {
+    inset-inline-end: var(--space-3);
+}
+
+.slider__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.slider__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    padding: 0;
+    transition: background var(--transition-fast), width var(--transition-fast);
+}
+
+.slider__dot.is-active {
+    background: var(--accent);
+    width: 22px;
+    border-radius: var(--radius-pill);
+}
+
+@media (max-width: 480px) {
+    .slider__arrow {
+        width: 34px;
+        height: 34px;
+    }
+}

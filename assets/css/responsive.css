@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Global responsive rules.
+   Component-level breakpoints (header nav collapse, footer columns,
+   hero/carousel reflow) already live inside their own files
+   (layout/header.css, layout/footer.css, pages/home.css) — don't
+   duplicate those here. This file is only for cross-cutting rules that
+   apply everywhere, using the same breakpoints those files already use:
+   980 / 860 / 720 / 620 / 480 / 420
+   ========================================================================== */
+
+/* ---------- Fluid container gutter ---------- */
+@media (max-width: 620px) {
+    .container {
+        width: min(1400px, 94%);
+    }
+}
+
+/* ---------- Base type scale steps down slightly on small screens
+   so var(--text-2xl)/(--text-xl) headings (used on future shop/
+   product/blog pages) don't overflow narrow viewports ---------- */
+@media (max-width: 480px) {
+    :root {
+        --text-2xl: 1.85rem;
+        --text-xl: 1.5rem;
+        --text-lg: 1.2rem;
+    }
+}
+
+/* ---------- Touch targets ---------- */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .icon-btn,
+    .header-icon {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* ---------- Utility visibility helpers ---------- */
+@media (max-width: 720px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 721px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}
+
+/* ---------- Prevent horizontal scroll from any full-bleed section ---------- */
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* ---------- Respect safe-area on notched phones for the fixed header ---------- */
+@supports (padding: max(0px)) {
+    .site-header {
+        padding-top: env(safe-area-inset-top, 0);
+    }
+}

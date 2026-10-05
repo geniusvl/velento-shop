@@ -1,0 +1,11 @@
+Velento Shop Theme Installation Guide
+
+1. Install WordPress.
+2. Upload the theme from Appearance > Themes.
+3. Install and activate WooCommerce.
+4. Configure menus, widgets and WooCommerce pages.
+
+Requirements:
+- WordPress 6.x+
+- PHP 8.1+
+- WooCommerce latest stable version

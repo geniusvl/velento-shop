@@ -1,0 +1,9 @@
+Velento Shop
+
+Copyright (C) Velento Shop contributors.
+
+This theme is licensed under the GNU General Public License, version 2 or later (GPL-2.0-or-later).
+
+You may redistribute and/or modify the theme under the terms of the GNU GPL as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version.
+
+This file applies to the theme code. Third-party assets bundled with the theme may have separate licenses; verify those licenses before redistribution.

@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Forms — shared field styles for newsletter, checkout, my-account,
+   product reviews, contact page, etc.
+   ========================================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.form-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-label .required {
+    color: var(--accent);
+    margin-inline-start: 2px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-family: inherit;
+    font-size: var(--text-base);
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--secondary);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.form-input:disabled,
+.form-textarea:disabled,
+.form-select:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* ---------- Validation states ---------- */
+
+.form-group.has-error .form-input,
+.form-group.has-error .form-textarea,
+.form-group.has-error .form-select {
+    border-color: #c0392b;
+}
+
+.form-hint {
+    font-size: var(--text-xs);
+    color: var(--secondary);
+}
+
+.form-error {
+    font-size: var(--text-xs);
+    color: #c0392b;
+}
+
+.form-group.has-success .form-input {
+    border-color: #2e7d32;
+}
+
+/* ---------- Checkbox / radio ---------- */
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    cursor: pointer;
+}
+
+.form-check input[type="checkbox"],
+.form-check input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+/* ---------- Select chevron (logical, so it sits correctly in RTL) ---------- */
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left var(--space-3) center;
+    padding-inline-start: var(--space-6);
+}
+
+[dir="rtl"] .form-select {
+    background-position: left var(--space-3) center;
+}
+
+/* ---------- Inline field group (e.g. newsletter email + submit) ---------- */
+
+.form-inline {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.form-inline .form-input {
+    flex: 1;
+}
+
+@media (max-width: 480px) {
+    .form-inline {
+        flex-direction: column;
+    }
+}

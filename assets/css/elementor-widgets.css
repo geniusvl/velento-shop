@@ -1,0 +1,278 @@
+/*
+ * Velento Shop — Elementor Widgets
+ *
+ * Every rule below reads color through the theme's own custom
+ * properties (--accent / --bg / --text / --border, defined in
+ * assets/css/base/variables.css). Nothing here hardcodes a hex value.
+ * That's what makes the "پالت رنگی" style section on every widget
+ * (inc/elementor/widgets/base.php) work: Elementor just overrides
+ * these same variables on the widget's own wrapper element, and every
+ * rule below inherits the change automatically.
+ */
+
+.velento-el-widget { --v-radius: var(--radius, 12px); }
+
+/* ---------------------------------------------------------------
+ * 1. Hero Slider
+ * ------------------------------------------------------------- */
+.velento-el-hero { position: relative; overflow: hidden; padding: var(--space-8, 64px) 0; background: var(--bg); color: var(--text); }
+.velento-el-hero__wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--space-5, 24px); display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-7, 48px); align-items: center; }
+.velento-el-hero__eyebrow { color: var(--accent); font-size: var(--text-sm); letter-spacing: .08em; display: flex; gap: 10px; align-items: center; margin: 0 0 var(--space-3, 12px); }
+.velento-el-hero__title { font-size: clamp(1.75rem, 3.4vw, 2.6rem); line-height: var(--leading-tight, 1.25); margin: 0 0 var(--space-4, 16px); }
+.velento-el-hero__subtitle { color: var(--secondary, #666); font-size: var(--text-md); line-height: var(--leading-normal, 1.6); margin: 0 0 var(--space-5, 24px); max-width: 46ch; }
+.velento-el-hero__actions { margin-bottom: var(--space-5, 24px); }
+.velento-el-hero__trust { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-4, 16px); font-size: var(--text-xs); color: var(--secondary, #666); }
+.velento-el-hero__trust li { position: relative; padding-inline-start: 14px; }
+.velento-el-hero__trust li::before { content: ""; position: absolute; inset-inline-start: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.velento-el-hero__showcase { position: relative; aspect-ratio: 4/5; border-radius: var(--v-radius); overflow: hidden; background: var(--border); }
+.velento-el-hero__slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .6s ease; }
+.velento-el-hero__slide.is-active { opacity: 1; visibility: visible; }
+.velento-el-hero__slide img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-hero__caption { position: absolute; inset-inline-start: var(--space-4, 16px); bottom: var(--space-4, 16px); background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: blur(6px); border-radius: var(--radius-sm, 8px); padding: var(--space-2, 8px) var(--space-3, 12px); }
+.velento-el-hero__caption b { display: block; color: var(--accent); font-size: var(--text-xs); }
+.velento-el-hero__dots { position: absolute; inset-inline-start: 50%; transform: translateX(-50%); bottom: var(--space-3, 12px); display: flex; gap: 6px; }
+.velento-el-hero__dot { width: 8px; height: 8px; border-radius: 50%; border: none; background: rgba(255,255,255,.5); cursor: pointer; padding: 0; }
+.velento-el-hero__dot.is-active { background: var(--accent); width: 20px; border-radius: var(--radius-pill); transition: var(--transition); }
+@media (max-width: 900px) { .velento-el-hero__wrap { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------
+ * 2. Featured Carousel
+ * ------------------------------------------------------------- */
+.velento-el-carousel { padding: var(--space-7, 48px) 0; background: var(--bg); }
+.velento-el-carousel__stage { position: relative; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-5, 24px); }
+.velento-el-carousel__track { display: flex; gap: var(--space-4, 16px); overflow-x: auto; scroll-snap-type: x mandatory; padding: var(--space-2, 8px) 0 var(--space-4, 16px); scrollbar-width: none; }
+.velento-el-carousel__track::-webkit-scrollbar { display: none; }
+.velento-el-carousel__item { flex: 0 0 220px; scroll-snap-align: start; background: var(--bg); border: 1px solid var(--border); border-radius: var(--v-radius); padding: var(--space-4, 16px); text-align: center; transition: var(--transition); }
+.velento-el-carousel__item:hover { border-color: var(--accent); transform: translateY(-4px); }
+.velento-el-carousel__photo { aspect-ratio: 1; border-radius: var(--radius-sm, 8px); overflow: hidden; margin-bottom: var(--space-3, 12px); background: var(--border); }
+.velento-el-carousel__photo img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-carousel__tag { color: var(--accent); font-size: var(--text-xs); margin: 0 0 4px; }
+.velento-el-carousel__name { color: var(--text); font-size: var(--text-base); margin: 0; }
+.velento-el-carousel__nav { display: flex; justify-content: center; gap: var(--space-3, 12px); margin-top: var(--space-2, 8px); }
+.velento-el-carousel__nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: var(--transition-fast); }
+.velento-el-carousel__nav button:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ---------------------------------------------------------------
+ * 3. Product Grid  /  4. Product Spotlight
+ * ------------------------------------------------------------- */
+.velento-el-products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--v-cols, 4), 1fr); gap: var(--space-5, 24px); }
+.velento-el-product { background: var(--bg); border: 1px solid var(--border); border-radius: var(--v-radius); overflow: hidden; transition: var(--transition); }
+.velento-el-product:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.velento-el-product__media { position: relative; display: block; aspect-ratio: 1; background: var(--border); }
+.velento-el-product__media img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-product__badge { position: absolute; top: 10px; inset-inline-start: 10px; background: var(--accent); color: #fff; font-size: var(--text-xs); padding: 3px 10px; border-radius: var(--radius-pill); }
+.velento-el-product__body { padding: var(--space-4, 16px); }
+.velento-el-product__brand { display: block; color: var(--accent); font-size: var(--text-xs); margin-bottom: 4px; }
+.velento-el-product__title { font-size: var(--text-base); margin: 0 0 8px; }
+.velento-el-product__title a { color: var(--text); text-decoration: none; }
+.velento-el-product__price { color: var(--accent); font-weight: 700; font-size: var(--text-md); }
+.velento-el-product__price del { color: var(--secondary, #666); font-weight: 400; margin-inline-start: 6px; }
+@media (max-width: 1000px) { .velento-el-products { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .velento-el-products { grid-template-columns: 1fr; } }
+
+.velento-el-spotlight { display: grid; grid-template-columns: .9fr 1.1fr; gap: var(--space-7, 48px); align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: var(--v-radius); overflow: hidden; }
+.velento-el-spotlight__media { aspect-ratio: 1; background: var(--border); }
+.velento-el-spotlight__media img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-spotlight__body { padding: var(--space-6, 32px) var(--space-6, 32px) var(--space-6, 32px) 0; }
+.velento-el-spotlight__brand { color: var(--accent); font-size: var(--text-sm); }
+.velento-el-spotlight__title { font-size: var(--text-2xl); margin: var(--space-2, 8px) 0 var(--space-3, 12px); color: var(--text); }
+.velento-el-spotlight__desc { color: var(--secondary, #666); line-height: var(--leading-normal); margin-bottom: var(--space-4, 16px); }
+.velento-el-spotlight__price { font-size: var(--text-xl); color: var(--accent); font-weight: 700; margin-bottom: var(--space-4, 16px); display: block; }
+@media (max-width: 780px) { .velento-el-spotlight { grid-template-columns: 1fr; } .velento-el-spotlight__body { padding: var(--space-5, 24px); } }
+
+/* ---------------------------------------------------------------
+ * 5. Section Heading
+ * ------------------------------------------------------------- */
+.velento-el-heading { margin-bottom: var(--space-6, 32px); }
+.velento-el-heading.is-center { text-align: center; }
+.velento-el-heading__eyebrow { color: var(--accent); font-size: var(--text-sm); letter-spacing: .08em; margin: 0 0 8px; }
+.velento-el-heading__title { color: var(--text); font-size: var(--text-2xl); margin: 0 0 8px; }
+.velento-el-heading__title em { color: var(--accent); font-style: normal; }
+.velento-el-heading__subtitle { color: var(--secondary, #666); font-size: var(--text-md); max-width: 60ch; }
+.velento-el-heading.is-center .velento-el-heading__subtitle { margin-inline: auto; }
+
+/* ---------------------------------------------------------------
+ * 6. CTA Banner  /  20. Promo Banner
+ * ------------------------------------------------------------- */
+.velento-el-cta { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--space-6, 32px); background: var(--text); color: var(--bg); border-radius: var(--v-radius); overflow: hidden; }
+.velento-el-cta.is-image-right { direction: ltr; }
+.velento-el-cta.is-image-right > * { direction: rtl; }
+.velento-el-cta__media { aspect-ratio: 16/11; background: var(--border); }
+.velento-el-cta__media img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-cta__body { padding: var(--space-6, 32px); }
+.velento-el-cta__eyebrow { color: var(--accent); font-size: var(--text-sm); }
+.velento-el-cta__title { font-size: var(--text-xl); margin: 8px 0 12px; }
+.velento-el-cta__desc { opacity: .8; margin-bottom: var(--space-4, 16px); line-height: var(--leading-normal); }
+@media (max-width: 780px) { .velento-el-cta, .velento-el-cta.is-image-right { grid-template-columns: 1fr; direction: rtl; } }
+
+.velento-el-promo { position: relative; min-height: 420px; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: var(--v-radius); overflow: hidden; background: var(--text); color: #fff; }
+.velento-el-promo__bg { position: absolute; inset: 0; z-index: 0; }
+.velento-el-promo__bg img, .velento-el-promo__bg video { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-promo__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)); z-index: 1; }
+.velento-el-promo__body { position: relative; z-index: 2; max-width: 640px; padding: var(--space-6, 32px); }
+.velento-el-promo__eyebrow { color: var(--accent); letter-spacing: .1em; font-size: var(--text-sm); }
+.velento-el-promo__title { font-size: clamp(1.75rem, 4vw, 2.75rem); margin: 12px 0; }
+.velento-el-promo__desc { opacity: .85; margin-bottom: var(--space-5, 24px); }
+
+/* ---------------------------------------------------------------
+ * 8. USP Band  /  9. Trust Badges
+ * ------------------------------------------------------------- */
+.velento-el-usp { display: grid; grid-template-columns: repeat(var(--v-cols, 4), 1fr); gap: var(--space-5, 24px); padding: var(--space-6, 32px) 0; }
+.velento-el-usp__item { text-align: center; padding: var(--space-4, 16px); }
+.velento-el-usp__icon { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); margin-bottom: var(--space-3, 12px); }
+.velento-el-usp__title { color: var(--text); font-size: var(--text-md); margin: 0 0 6px; }
+.velento-el-usp__desc { color: var(--secondary, #666); font-size: var(--text-sm); margin: 0; }
+@media (max-width: 900px) { .velento-el-usp { grid-template-columns: repeat(2, 1fr); } }
+
+.velento-el-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-6, 32px); padding: var(--space-4, 16px) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.velento-el-badges__item { display: flex; align-items: center; gap: 8px; color: var(--secondary, #666); font-size: var(--text-sm); }
+.velento-el-badges__item svg, .velento-el-badges__item .velento-el-icon { color: var(--accent); width: 22px; height: 22px; flex: none; }
+
+/* ---------------------------------------------------------------
+ * 10. Newsletter
+ * ------------------------------------------------------------- */
+.velento-el-newsletter { background: var(--text); color: var(--bg); border-radius: var(--v-radius); padding: var(--space-6, 32px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-5, 24px); }
+.velento-el-newsletter__title { font-size: var(--text-lg); margin: 0 0 6px; }
+.velento-el-newsletter__subtitle { opacity: .75; margin: 0; font-size: var(--text-sm); max-width: 42ch; }
+.velento-el-newsletter__form { display: flex; gap: 8px; flex-wrap: wrap; }
+.velento-el-newsletter__form input[type="email"] { border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); color: inherit; border-radius: var(--radius-pill); padding: 12px 18px; min-width: 240px; }
+.velento-el-newsletter__msg { flex-basis: 100%; font-size: var(--text-xs); margin-top: 6px; }
+.velento-el-newsletter__msg.is-success { color: #8ee6a0; }
+.velento-el-newsletter__msg.is-error { color: #f29a9a; }
+
+/* ---------------------------------------------------------------
+ * 11. Announcement Bar
+ * ------------------------------------------------------------- */
+.velento-el-announcement { background: var(--accent); color: #1a1a1a; text-align: center; padding: 10px var(--space-4, 16px); font-size: var(--text-sm); border-radius: var(--radius-sm, 8px); }
+.velento-el-announcement a { color: inherit; font-weight: 600; text-decoration: underline; }
+
+/* ---------------------------------------------------------------
+ * 12. Brand Logos
+ * ------------------------------------------------------------- */
+.velento-el-brands { overflow: hidden; padding: var(--space-5, 24px) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.velento-el-brands__track { display: flex; align-items: center; gap: var(--space-7, 48px); }
+.velento-el-brands.is-marquee .velento-el-brands__track { width: max-content; animation: velento-el-marquee 28s linear infinite; }
+.velento-el-brands:not(.is-marquee) .velento-el-brands__track { flex-wrap: wrap; justify-content: center; }
+.velento-el-brands__logo { height: 32px; max-width: 120px; object-fit: contain; opacity: .6; filter: grayscale(1); transition: var(--transition-fast); }
+.velento-el-brands__logo:hover { opacity: 1; filter: grayscale(0); }
+@keyframes velento-el-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------------------------------------------------------------
+ * 13. Image + Text
+ * ------------------------------------------------------------- */
+.velento-el-imgtext { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7, 48px); align-items: center; }
+.velento-el-imgtext.is-image-right { direction: ltr; }
+.velento-el-imgtext.is-image-right > * { direction: rtl; }
+.velento-el-imgtext__media { border-radius: var(--v-radius); overflow: hidden; aspect-ratio: 4/3; background: var(--border); }
+.velento-el-imgtext__media img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-imgtext__eyebrow { color: var(--accent); font-size: var(--text-sm); }
+.velento-el-imgtext__title { color: var(--text); font-size: var(--text-2xl); margin: 10px 0; }
+.velento-el-imgtext__desc { color: var(--secondary, #666); line-height: var(--leading-normal); margin-bottom: var(--space-4, 16px); }
+@media (max-width: 780px) { .velento-el-imgtext, .velento-el-imgtext.is-image-right { grid-template-columns: 1fr; direction: rtl; } }
+
+/* ---------------------------------------------------------------
+ * 14. Testimonials
+ * ------------------------------------------------------------- */
+.velento-el-testimonials__track { display: flex; gap: var(--space-5, 24px); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-3, 12px); scrollbar-width: none; }
+.velento-el-testimonials__track::-webkit-scrollbar { display: none; }
+.velento-el-testimonial { flex: 0 0 min(360px, 85vw); scroll-snap-align: start; background: var(--bg); border: 1px solid var(--border); border-radius: var(--v-radius); padding: var(--space-5, 24px); }
+.velento-el-testimonial__stars { color: var(--accent); letter-spacing: 2px; margin-bottom: 10px; }
+.velento-el-testimonial__quote { color: var(--text); line-height: var(--leading-normal); margin: 0 0 var(--space-4, 16px); }
+.velento-el-testimonial__author { display: flex; align-items: center; gap: 10px; }
+.velento-el-testimonial__avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--border); }
+.velento-el-testimonial__name { color: var(--text); font-weight: 600; font-size: var(--text-sm); display: block; }
+.velento-el-testimonial__role { color: var(--secondary, #666); font-size: var(--text-xs); }
+
+/* ---------------------------------------------------------------
+ * 15. FAQ Accordion
+ * ------------------------------------------------------------- */
+.velento-el-faq { border-top: 1px solid var(--border); }
+.velento-el-faq__item { border-bottom: 1px solid var(--border); }
+.velento-el-faq__q { width: 100%; text-align: start; background: none; border: none; padding: var(--space-4, 16px) 4px; display: flex; justify-content: space-between; align-items: center; gap: 10px; cursor: pointer; color: var(--text); font-size: var(--text-md); font-family: inherit; }
+.velento-el-faq__q .v-icon { color: var(--accent); transition: transform .25s ease; flex: none; }
+.velento-el-faq__item.is-open .velento-el-faq__q .v-icon { transform: rotate(45deg); }
+.velento-el-faq__a { max-height: 0; overflow: hidden; transition: max-height .3s ease; color: var(--secondary, #666); line-height: var(--leading-normal); }
+.velento-el-faq__a-inner { padding: 0 4px var(--space-4, 16px); }
+.velento-el-faq__item.is-open .velento-el-faq__a { max-height: 600px; }
+
+/* ---------------------------------------------------------------
+ * 16. Blog Grid
+ * ------------------------------------------------------------- */
+.velento-el-blog { display: grid; grid-template-columns: repeat(var(--v-cols, 3), 1fr); gap: var(--space-5, 24px); }
+.velento-el-post { background: var(--bg); border: 1px solid var(--border); border-radius: var(--v-radius); overflow: hidden; transition: var(--transition); }
+.velento-el-post:hover { border-color: var(--accent); transform: translateY(-3px); }
+.velento-el-post__media { display: block; aspect-ratio: 16/10; background: var(--border); }
+.velento-el-post__media img { width: 100%; height: 100%; object-fit: cover; }
+.velento-el-post__body { padding: var(--space-4, 16px); }
+.velento-el-post__date { color: var(--accent); font-size: var(--text-xs); }
+.velento-el-post__title { font-size: var(--text-base); margin: 8px 0; }
+.velento-el-post__title a { color: var(--text); text-decoration: none; }
+.velento-el-post__excerpt { color: var(--secondary, #666); font-size: var(--text-sm); line-height: var(--leading-normal); }
+@media (max-width: 900px) { .velento-el-blog { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------
+ * 17. Category Band
+ * ------------------------------------------------------------- */
+.velento-el-categories { display: grid; grid-template-columns: repeat(var(--v-cols, 4), 1fr); gap: var(--space-4, 16px); }
+.velento-el-category { position: relative; display: block; aspect-ratio: 3/4; border-radius: var(--v-radius); overflow: hidden; }
+.velento-el-category img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.velento-el-category:hover img { transform: scale(1.06); }
+.velento-el-category::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.75)); }
+.velento-el-category__label { position: absolute; inset-inline-start: 16px; bottom: 16px; z-index: 1; color: #fff; }
+.velento-el-category__label b { display: block; font-size: var(--text-md); }
+.velento-el-category__label span { font-size: var(--text-xs); color: var(--accent); }
+@media (max-width: 900px) { .velento-el-categories { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------------------------------------------------------------
+ * 18. Stats Counter
+ * ------------------------------------------------------------- */
+.velento-el-stats { display: grid; grid-template-columns: repeat(var(--v-cols, 4), 1fr); gap: var(--space-5, 24px); text-align: center; }
+.velento-el-stat__num { color: var(--accent); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; display: block; }
+.velento-el-stat__label { color: var(--secondary, #666); font-size: var(--text-sm); margin-top: 6px; }
+@media (max-width: 700px) { .velento-el-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------------------------------------------------------------
+ * 19. Countdown Timer
+ * ------------------------------------------------------------- */
+.velento-el-countdown { display: flex; justify-content: center; gap: var(--space-3, 12px); }
+.velento-el-countdown__box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm, 8px); padding: var(--space-3, 12px) var(--space-4, 16px); text-align: center; min-width: 72px; }
+.velento-el-countdown__num { color: var(--accent); font-size: var(--text-xl); font-weight: 700; display: block; font-variant-numeric: tabular-nums; }
+.velento-el-countdown__label { color: var(--secondary, #666); font-size: var(--text-xs); }
+.velento-el-countdown.is-ended .velento-el-countdown__msg { color: var(--text); text-align: center; }
+
+/* ---------------------------------------------------------------
+ * Generic button (used by widget #20 and CTA/promo banners)
+ * ------------------------------------------------------------- */
+.velento-el-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: var(--radius-pill); font-size: var(--text-sm); font-weight: 600; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: var(--transition-fast); }
+.velento-el-btn--primary { background: var(--accent); color: #1a1a1a; }
+.velento-el-btn--primary:hover { filter: brightness(1.08); }
+.velento-el-btn--outline { background: transparent; color: var(--text); border-color: var(--border); }
+.velento-el-btn--outline:hover { border-color: var(--accent); color: var(--accent); }
+.velento-el-btn--ghost { background: transparent; color: var(--accent); }
+.velento-el-btn--sm { padding: 8px 18px; font-size: var(--text-xs); }
+.velento-el-btn--lg { padding: 16px 34px; font-size: var(--text-md); }
+
+.velento-el-container { max-width: 1240px; margin: 0 auto; padding: 0 var(--space-5, 24px); }
+
+/* ---------------------------------------------------------------
+ * 21. Contact Form
+ * ------------------------------------------------------------- */
+.velento-el-contact__form { display: flex; flex-direction: column; gap: var(--space-4, 16px); max-width: 640px; }
+.velento-el-contact__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4, 16px); }
+.velento-el-contact__msg-holder .velento-el-newsletter__msg { color: var(--text); }
+.velento-el-contact__msg-holder .is-success { color: #2f9e58; }
+.velento-el-contact__msg-holder .is-error { color: #c0392b; }
+@media (max-width: 560px) { .velento-el-contact__row { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------
+ * 22. Store Map / Address
+ * ------------------------------------------------------------- */
+.velento-el-map { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-5, 24px); align-items: stretch; }
+.velento-el-map__frame { border-radius: var(--v-radius); overflow: hidden; min-height: 280px; background: var(--border); }
+.velento-el-map__frame iframe { width: 100%; height: 100%; min-height: 280px; border: 0; display: block; }
+.velento-el-map__card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--v-radius); padding: var(--space-5, 24px); align-self: center; }
+.velento-el-map__title { color: var(--text); font-size: var(--text-lg); margin: 0 0 var(--space-3, 12px); }
+.velento-el-map__row { display: flex; align-items: center; gap: 10px; color: var(--secondary, #666); margin: 0 0 10px; }
+.velento-el-map__row a { color: var(--accent); text-decoration: none; }
+.velento-el-map:has(.velento-el-map__frame:empty) { grid-template-columns: 1fr; }
+@media (max-width: 780px) { .velento-el-map { grid-template-columns: 1fr; } }

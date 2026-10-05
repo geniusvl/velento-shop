@@ -1,0 +1,22 @@
+/*
+Theme Name: Velento Shop
+Theme URI: https://github.com/geniusvl/velento-shop
+Author: shahrad
+Author URI: https://github.com/geniusvl
+Description: Velento Shop — پوسته لوکس ووکامرسی فارسی برای فروشگاه‌های ساعت، با پشتیبانی کامل راست‌چین و طراحی حرفه‌ای.
+Version: 0.8.2
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: velento-shop
+*/
+
+/*
+ * NOTE: WordPress never serves this file to the front end on its own —
+ * it only reads the header above for theme metadata. All real styles
+ * are enqueued (in the correct dependency order) from inc/enqueue.php,
+ * so don't @import anything here; add new stylesheets there instead.
+ */
+

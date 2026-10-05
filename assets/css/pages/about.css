@@ -1,0 +1,180 @@
+
+/* Velento About — editorial luxury page, matched to the homepage tokens. */
+.velento-about{
+    font-family:"Estedad",sans-serif;
+    --about-bg:var(--bg);
+    --about-text:var(--text);
+    --about-muted:var(--secondary);
+    --about-line:var(--border);
+    --about-gold:var(--accent);
+    background:var(--about-bg);
+    color:var(--about-text);
+    overflow:hidden;
+}
+.velento-about *{box-sizing:border-box}
+.velento-about a{color:inherit}
+.about-container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+.about-hero{position:relative;min-height:650px;display:flex;align-items:center;border-bottom:1px solid var(--about-line);overflow:hidden;background:radial-gradient(circle at 25% 45%,color-mix(in srgb,var(--about-gold) 7%,transparent),transparent 28%),var(--about-bg)}
+.about-hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr .95fr;align-items:center;gap:70px}
+.about-hero-copy{max-width:570px}
+.about-kicker{display:inline-flex;align-items:center;gap:9px;color:var(--about-gold);font-size:10px;font-weight:600;letter-spacing:.04em}
+.about-kicker i{display:block;width:22px;height:1px;background:currentColor;opacity:.8}
+.about-hero h1{font-size:clamp(36px,5vw,68px);line-height:1.28;letter-spacing:-.055em;font-weight:500;margin:20px 0 22px}
+.about-hero h1 em,.about-intro h2 em,.about-section-heading h2 em,.about-contact h2 em,.about-final h2 em{font-style:normal;color:var(--about-gold)}
+.about-hero p{max-width:540px;color:var(--about-muted);font-size:13px;line-height:2.2;margin:0}
+.about-hero-actions{display:flex;align-items:center;gap:25px;margin-top:34px}
+.about-btn{min-height:44px;padding:0 22px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;gap:13px;text-decoration:none!important;font-size:11px;font-weight:600;transition:.25s ease}
+.about-btn span{font-size:14px;color:var(--about-gold)}
+.about-btn-gold{background:var(--about-gold);color:#15120d!important}
+.about-btn-gold:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.about-text-link{font-size:10px;color:var(--about-muted)!important;text-decoration:none;transition:.25s}
+.about-text-link span{color:var(--about-gold);margin-right:7px}
+.about-text-link:hover{color:var(--about-text)!important}
+.about-hero-watch{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.about-hero-watch img{position:relative;z-index:3;width:64%;max-height:450px;object-fit:contain;filter:drop-shadow(0 28px 30px rgba(0,0,0,.3));animation:aboutFloat 6s ease-in-out infinite}
+.about-watch-ring{position:absolute;border:1px solid color-mix(in srgb,var(--about-gold) 28%,transparent);border-radius:50%}
+.ring-large{inset:6%;animation:aboutSpin 28s linear infinite}
+.ring-small{inset:23%;border-color:color-mix(in srgb,var(--about-gold) 18%,transparent);animation:aboutSpin 20s linear infinite reverse}
+.about-watch-line{position:absolute;width:72%;height:1px;background:linear-gradient(90deg,transparent,var(--about-gold),transparent);opacity:.35}
+.about-watch-label{position:absolute;bottom:5%;font-size:8px;letter-spacing:.22em;color:var(--about-muted)}
+.about-hero-orbit{position:absolute;border:1px solid color-mix(in srgb,var(--about-gold) 8%,transparent);border-radius:50%;pointer-events:none}
+.orbit-one{width:760px;height:760px;right:-280px;top:-130px}
+.orbit-two{width:430px;height:430px;left:-180px;bottom:-170px}
+.about-hero-glow{position:absolute;width:430px;height:430px;right:13%;top:18%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--about-gold) 14%,transparent),transparent 68%);filter:blur(8px);pointer-events:none}
+.about-intro{padding:105px 0 95px}
+.about-intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px}
+.about-overline{display:block;color:var(--about-gold);font-size:9px;font-weight:700;letter-spacing:.05em;margin-bottom:14px}
+.about-intro h2,.about-section-heading h2{font-size:clamp(28px,3.5vw,45px);line-height:1.35;font-weight:500;letter-spacing:-.04em;margin:0}
+.about-intro-copy{padding-top:9px;max-width:650px}
+.about-intro-copy p{color:var(--about-muted);font-size:12.5px;line-height:2.15;margin:0 0 20px}
+.about-intro-copy .about-lead{font-size:17px;line-height:1.95;color:var(--about-text);font-weight:400}
+.about-values{padding:100px 0;background:color-mix(in srgb,var(--about-bg) 96%,var(--about-text))}
+.about-section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:42px}
+.about-section-heading>p{color:var(--about-muted);font-size:10px;margin:0 0 4px}
+.about-value-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--about-line);border-bottom:1px solid var(--about-line)}
+.about-value-card{position:relative;min-height:290px;padding:28px 24px;border-left:1px solid var(--about-line);transition:.3s ease}
+.about-value-card:last-child{border-left:0}
+.about-value-card:hover{background:color-mix(in srgb,var(--about-gold) 5%,transparent)}
+.about-number{position:absolute;top:25px;left:22px;color:var(--about-muted);font-size:8px}
+.about-value-icon{width:42px;height:42px;border:1px solid color-mix(in srgb,var(--about-gold) 45%,var(--about-line));border-radius:50%;display:grid;place-items:center;color:var(--about-gold);font-size:18px;margin-bottom:55px}
+.about-value-card h3{font-size:15px;font-weight:600;margin:0 0 12px}
+.about-value-card p{color:var(--about-muted);font-size:10.5px;line-height:2.05;margin:0}
+.about-quote{padding:115px 0;text-align:center;position:relative}
+.about-quote:before{content:"";position:absolute;left:50%;top:0;width:1px;height:58px;background:linear-gradient(var(--about-gold),transparent);opacity:.55}
+.about-quote-mark{color:var(--about-gold);font-family:"Estedad",sans-serif;font-size:80px;line-height:.6;opacity:.75}
+.about-quote blockquote{max-width:800px;margin:20px auto 18px;font-size:clamp(24px,3.5vw,42px);line-height:1.65;letter-spacing:-.04em;font-weight:400}
+.about-quote blockquote span{color:var(--about-gold)}
+.about-quote p{font-size:9px;color:var(--about-muted);margin:0}
+.about-history{padding:100px 0 115px;border-top:1px solid var(--about-line)}
+.about-timeline{position:relative;margin-top:60px}
+.about-timeline:before{content:"";position:absolute;right:90px;top:0;bottom:0;width:1px;background:var(--about-line)}
+.about-timeline-item{display:grid;grid-template-columns:160px 1fr;gap:80px;position:relative;padding:0 0 62px}
+.about-timeline-item:before{content:"";position:absolute;right:84px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--about-bg);border:1px solid var(--about-gold);box-shadow:0 0 0 6px var(--about-bg)}
+.about-timeline-item:last-child{padding-bottom:0}
+.about-timeline-year{font-size:12px;color:var(--about-gold);font-weight:600;padding-top:0}
+.about-timeline-index{font-size:8px;color:var(--about-muted);letter-spacing:.08em}
+.about-timeline-item h3{font-size:19px;font-weight:500;margin:9px 0 10px}
+.about-timeline-item p{max-width:620px;color:var(--about-muted);font-size:11px;line-height:2.1;margin:0}
+.about-timeline-item.is-current h3{color:var(--about-gold)}
+.about-numbers{padding:70px 0;border-block:1px solid var(--about-line)}
+.about-number-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.about-number-grid>div{text-align:center;border-left:1px solid var(--about-line)}
+.about-number-grid>div:last-child{border-left:0}
+.about-number-grid strong{display:block;font-size:31px;font-weight:500;letter-spacing:-.04em}
+.about-number-grid span{display:block;color:var(--about-muted);font-size:9px;margin-top:7px}
+.about-contact{padding:105px 0}
+.about-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-contact-copy p{max-width:430px;color:var(--about-muted);font-size:12px;line-height:2;margin:20px 0 28px}
+.about-contact-card{border:1px solid var(--about-line);border-radius:14px;padding:8px 28px;background:color-mix(in srgb,var(--about-bg) 96%,var(--about-text));box-shadow:var(--shadow-md)}
+.about-contact-row{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:19px 0;border-bottom:1px solid var(--about-line);font-size:10.5px}
+.about-contact-row>span{color:var(--about-muted)}
+.about-contact-row a,.about-contact-row address{font-style:normal;text-decoration:none;color:var(--about-text);transition:.2s}
+.about-contact-row a:hover{color:var(--about-gold)}
+.about-contact-hours{display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-size:9px;color:var(--about-muted)}
+.about-contact-hours strong{color:var(--about-gold);font-weight:600}
+.about-final{padding:120px 0;text-align:center;border-top:1px solid var(--about-line);background:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--about-gold) 8%,transparent),transparent 35%)}
+.about-final h2{font-size:clamp(34px,5vw,62px);font-weight:400;line-height:1.5;letter-spacing:-.05em;margin:20px 0 32px}
+.about-btn-outline{border:1px solid var(--about-gold);color:var(--about-text)!important;background:transparent}
+.about-btn-outline:hover{background:var(--about-gold);color:#15120d!important}
+@keyframes aboutFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes aboutSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.about-hero-watch img,.about-watch-ring{animation:none}}
+@media (max-width:900px){
+    .about-hero{min-height:auto;padding:90px 0 70px}
+    .about-hero-grid,.about-intro-grid,.about-contact-grid{grid-template-columns:1fr;gap:45px}
+    .about-hero-copy{max-width:none}
+    .about-hero-watch{width:min(520px,90vw);margin-inline:auto}
+    .about-value-grid{grid-template-columns:repeat(2,1fr)}
+    .about-value-card:nth-child(2){border-left:0}
+    .about-value-card:nth-child(-n+2){border-bottom:1px solid var(--about-line)}
+    .about-number-grid{grid-template-columns:repeat(2,1fr);row-gap:30px}
+    .about-number-grid>div:nth-child(2){border-left:0}
+    .about-section-heading{align-items:flex-start;flex-direction:column}
+}
+@media (max-width:620px){
+    .about-container{width:min(100% - 28px,1160px)}
+    .about-hero{padding:75px 0 55px}
+    .about-hero h1{font-size:34px}
+    .about-hero p{font-size:11.5px}
+    .about-hero-actions{gap:16px;flex-wrap:wrap}
+    .about-intro,.about-values,.about-history,.about-contact{padding:72px 0}
+    .about-intro-copy .about-lead{font-size:15px}
+    .about-value-grid{grid-template-columns:1fr}
+    .about-value-card{border-left:0;border-bottom:1px solid var(--about-line)!important;min-height:auto;padding:24px}
+    .about-value-card:last-child{border-bottom:0!important}
+    .about-value-icon{margin-bottom:35px}
+    .about-timeline:before{right:58px}
+    .about-timeline-item{grid-template-columns:85px 1fr;gap:35px}
+    .about-timeline-item:before{right:52px}
+    .about-timeline-year{font-size:10px}
+    .about-timeline-item h3{font-size:16px}
+    .about-timeline-item p{font-size:10px}
+    .about-contact-card{padding:5px 18px}
+    .about-contact-row{grid-template-columns:70px 1fr;gap:10px;font-size:9.5px}
+    .about-number-grid strong{font-size:25px}
+    .about-final{padding:90px 0}
+}
+
+/* Typography sync: About page uses the exact Estedad family, weights and homepage type scale. */
+.velento-about,
+.velento-about button,
+.velento-about input,
+.velento-about textarea,
+.velento-about select { font-family:"Estedad",sans-serif; }
+.velento-about .about-overline{font-size:10px;font-weight:700;}
+.velento-about .about-kicker{font-size:10px;font-weight:700;}
+.velento-about .about-intro h2,
+.velento-about .about-section-heading h2{font-size:clamp(25px,2.8vw,38px);line-height:1.3;font-weight:700;letter-spacing:-.035em;}
+.velento-about .about-intro-copy p{font-size:12.5px;line-height:2.05;}
+.velento-about .about-intro-copy .about-lead{font-size:12.5px;line-height:2.05;font-weight:400;}
+.velento-about .about-section-heading>p{font-size:10px;}
+.velento-about .about-number{font-size:8px;}
+.velento-about .about-value-icon{font-size:7px;}
+.velento-about .about-value-card h3{font-size:12px;font-weight:600;}
+.velento-about .about-value-card p{font-size:8px;line-height:1.9;}
+.velento-about .about-quote-mark{font-size:80px;}
+.velento-about .about-quote blockquote{font-size:clamp(25px,2.8vw,38px);line-height:1.3;font-weight:700;letter-spacing:-.035em;}
+.velento-about .about-quote p{font-size:9px;}
+.velento-about .about-timeline-year{font-size:10px;font-weight:700;}
+.velento-about .about-timeline-index{font-size:8px;}
+.velento-about .about-timeline-item h3{font-size:12px;font-weight:600;line-height:1.65;}
+.velento-about .about-timeline-item p{font-size:8px;line-height:1.9;}
+.velento-about .about-number-grid strong{font-size:31px;font-weight:500;}
+.velento-about .about-number-grid span{font-size:9px;}
+.velento-about .about-contact-copy p{font-size:11px;line-height:1.9;}
+.velento-about .about-contact-row{font-size:10.5px;}
+.velento-about .about-contact-hours{font-size:9px;}
+.velento-about .about-final h2{font-size:clamp(25px,2.8vw,38px);line-height:1.3;font-weight:700;letter-spacing:-.035em;}
+.velento-about .about-btn{font-size:11px;font-weight:700;}
+.velento-about .about-text-link{font-size:9px;}
+
+@media(max-width:620px){
+    .velento-about .about-intro h2,
+    .velento-about .about-section-heading h2,
+    .velento-about .about-quote blockquote,
+    .velento-about .about-final h2{font-size:25px;}
+    .velento-about .about-intro-copy .about-lead{font-size:12.5px;}
+    .velento-about .about-value-card h3{font-size:12px;}
+    .velento-about .about-value-card p,
+    .velento-about .about-timeline-item p{font-size:8px;}
+}

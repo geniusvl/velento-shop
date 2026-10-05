@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Velento Login Drawer — slides in from the left, same treatment as
+   the cart drawer (assets/css/components/cart-drawer.css).
+   ========================================================================== */
+.velento-login-drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(420px, 94vw);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    border-right: 1px solid var(--border);
+    box-shadow: 24px 0 70px rgba(0, 0, 0, .20);
+    transform: translateX(-105%);
+    visibility: hidden;
+    opacity: .96;
+    z-index: 1100;
+    transition: transform .24s cubic-bezier(.22, 1, .36, 1), visibility .24s ease;
+    direction: rtl;
+}
+
+body.login-active .velento-login-drawer {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.velento-login-drawer__header {
+    flex: 0 0 auto;
+    min-height: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.velento-login-drawer__eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--accent);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.velento-login-drawer__header h2 {
+    font-size: 1.45rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.velento-login-drawer__close {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.velento-login-drawer__close:hover,
+.velento-login-drawer__close:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: rotate(90deg);
+}
+
+.velento-login-drawer__content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 24px 28px 30px;
+}
+
+/* ---------- Sign in / sign up tab switch (gold pill indicator) ---------- */
+.velento-login-drawer__switch {
+    position: relative;
+    display: flex;
+    background: color-mix(in srgb, var(--text) 4%, transparent);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    margin-bottom: 22px;
+}
+
+.velento-login-drawer__switch button {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    border: 0;
+    background: transparent;
+    color: var(--secondary);
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: color .25s ease;
+}
+
+.velento-login-drawer__switch button.is-active { color: var(--bg); }
+
+.velento-login-drawer__indicator {
+    position: absolute;
+    inset: 4px;
+    width: calc(50% - 4px);
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+    transition: transform .32s cubic-bezier(.65, 0, .35, 1);
+    z-index: 1;
+}
+
+.velento-login-drawer[data-mode="signup"] .velento-login-drawer__indicator {
+    transform: translateX(-100%);
+}
+[dir="rtl"] .velento-login-drawer[data-mode="signup"] .velento-login-drawer__indicator {
+    transform: translateX(-100%);
+}
+
+.velento-login-drawer__notice {
+    margin: 0 0 16px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: .8rem;
+    line-height: 1.8;
+    color: #c0392b;
+    background: color-mix(in srgb, #c0392b 8%, transparent);
+    border: 1px solid color-mix(in srgb, #c0392b 25%, transparent);
+}
+
+.velento-login-drawer__notice.is-success {
+    color: #2e7d32;
+    background: color-mix(in srgb, #2e7d32 8%, transparent);
+    border-color: color-mix(in srgb, #2e7d32 25%, transparent);
+}
+
+.velento-login-drawer__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.velento-login-drawer__link {
+    color: var(--accent);
+    font-size: .78rem;
+    text-decoration: none;
+}
+
+.velento-login-drawer__link:hover { text-decoration: underline; }
+
+.velento-login-drawer__submit {
+    width: 100%;
+}
+
+.velento-login-drawer__submit.is-loading {
+    opacity: .7;
+    pointer-events: none;
+}
+
+.velento-login-drawer__switch-line {
+    margin: 18px 0 0;
+    text-align: center;
+    color: var(--secondary);
+    font-size: .82rem;
+}
+
+.velento-login-drawer__switch-line button {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--accent);
+    font-weight: 600;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.velento-login-drawer__switch-line button:hover { text-decoration: underline; }
+
+body.login-active .site-overlay {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.login-active { overflow: hidden; }
+
+/* ---------- Mobile: bottom sheet, not a full-screen takeover ----------
+   Same breakpoint/sizing as the cart drawer (components/cart-drawer.css)
+   so both feel identical on phones: a compact sheet over part of the
+   screen, sliding up from the bottom, rather than covering everything. */
+@media (max-width: 640px) {
+    .velento-login-drawer {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-height: 82vh;
+        border-right: none;
+        border-top: 1px solid var(--border);
+        border-radius: 22px 22px 0 0;
+        box-shadow: 0 -18px 50px rgba(0, 0, 0, .28);
+        transform: translateY(100%);
+        padding-top: 14px;
+    }
+
+    body.login-active .velento-login-drawer {
+        transform: translateY(0);
+    }
+
+    .velento-login-drawer::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        inset-inline-start: 50%;
+        transform: translateX(-50%);
+        width: 44px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--border);
+    }
+
+    .velento-login-drawer__header,
+    .velento-login-drawer__content {
+        padding-inline: 20px;
+    }
+}

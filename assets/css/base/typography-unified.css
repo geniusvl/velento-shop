@@ -1,0 +1,202 @@
+/*
+ * Velento Shop — Unified Typography System
+ * One visual hierarchy across Home, Shop, Brands, Blog, About,
+ * Product, Account, Cart and Checkout.
+ *
+ * Semantic hierarchy:
+ * H1 = page/hero title
+ * H2 = section title
+ * H3 = card/subsection title
+ * Body = descriptions and supporting copy
+ */
+:root{
+    --v-type-h1:38px;
+    --v-type-h2:28px;
+    --v-type-h3:18px;
+    --v-type-body:14px;
+    --v-type-small:12px;
+    --v-type-label:12px;
+    --v-type-line:1.95;
+    --v-type-heading-line:1.35;
+}
+
+html,body,
+button,input,textarea,select{
+    font-family:"Estedad",sans-serif;
+}
+
+body{
+    font-size:var(--v-type-body);
+    line-height:var(--v-type-line);
+}
+
+/* Keep the hierarchy semantic and visually identical everywhere. */
+main h1,
+.velento-home h1,
+.velento-shop-page h1,
+.velento-brands-page h1,
+.blog-page h1,
+.velento-about h1,
+.velento-single-product h1,
+.woocommerce h1,
+main .page-title{
+    font-size:var(--v-type-h1) !important;
+    line-height:var(--v-type-heading-line) !important;
+    font-weight:700 !important;
+    letter-spacing:-.025em !important;
+    margin:0 0 20px !important;
+}
+
+main h2,
+.velento-home h2,
+.velento-shop-page h2,
+.velento-brands-page h2,
+.blog-page h2,
+.velento-about h2,
+.velento-single-product h2,
+.woocommerce h2{
+    font-size:var(--v-type-h2) !important;
+    line-height:var(--v-type-heading-line) !important;
+    font-weight:700 !important;
+    letter-spacing:-.02em !important;
+}
+
+main h3,
+.velento-home h3,
+.velento-shop-page h3,
+.velento-brands-page h3,
+.blog-page h3,
+.velento-about h3,
+.velento-single-product h3,
+.woocommerce h3{
+    font-size:var(--v-type-h3) !important;
+    line-height:1.55 !important;
+    font-weight:600 !important;
+}
+
+/* Descriptive copy uses the same readable size/line-height as the
+   homepage's editorial copy. */
+.velento-home p,
+.velento-shop-page p,
+.velento-brands-page p,
+.blog-page p,
+.velento-about p,
+.velento-single-product p,
+.woocommerce .v-single-excerpt,
+.woocommerce .woocommerce-product-details__short-description,
+.woocommerce .product_meta,
+.woocommerce .woocommerce-Tabs-panel,
+main .entry-content{
+    font-size:var(--v-type-body) !important;
+    line-height:var(--v-type-line) !important;
+}
+
+/* Common supporting labels, navigation links and metadata. */
+.velento-home .v-overline,
+.velento-home .v-hero-eyebrow,
+.velento-home .v-heading>a,
+.velento-home .v-hero-trust,
+.velento-home .v-product-brand,
+.velento-shop-page .v-shop-overline,
+.velento-brands-page .v-brands-hero>div>span,
+.blog-page .blog-eyebrow,
+.blog-page .blog-section-kicker,
+.blog-page .blog-section-link,
+.blog-page .blog-meta,
+.velento-about .about-kicker,
+.velento-about .about-overline,
+.velento-about .about-section-heading>p,
+.v-shop-result,
+.v-shop-brands a,
+.v-stock-dot{
+    font-size:var(--v-type-small) !important;
+    line-height:1.7 !important;
+}
+
+/* Homepage is the visual source of truth. Normalize its existing
+   intentionally smaller values to the same site-wide hierarchy. */
+.velento-home .v-hero-title{font-size:var(--v-type-h1) !important;line-height:var(--v-type-heading-line) !important;}
+.velento-home .v-heading h2,
+.velento-home .v-sale-copy h2,
+.velento-home .v-faq-intro h2{font-size:var(--v-type-h2) !important;line-height:var(--v-type-heading-line) !important;}
+.velento-home .v-hero-subtitle,
+.velento-home .v-sale-copy p,
+.velento-home .v-faq-intro p,
+.velento-home .v-newsletter-copy p,
+.velento-home .v-feature p{font-size:var(--v-type-body) !important;line-height:var(--v-type-line) !important;}
+.velento-home .v-cat-card h3,
+.velento-home .v-product-card h3,
+.velento-home .v-feature h3{font-size:var(--v-type-h3) !important;line-height:1.55 !important;}
+
+/* Shop/product cards. Keep price and badges distinct functional UI,
+   but bring product names into the same H3 scale. */
+.woocommerce-loop-product__title,
+.v-product-card .woocommerce-loop-product__title,
+.v-product-info h2{
+    font-size:var(--v-type-h3) !important;
+    line-height:1.55 !important;
+    font-weight:600 !important;
+}
+.v-brand-copy h2{font-size:var(--v-type-h2) !important;line-height:var(--v-type-heading-line) !important;}
+.v-single-title{font-size:var(--v-type-h1) !important;line-height:var(--v-type-heading-line) !important;}
+.v-tab-panel h2{font-size:var(--v-type-h2) !important;line-height:var(--v-type-heading-line) !important;}
+
+/* Blog cards and About page: remove their separate editorial scale. */
+.blog-title{font-size:var(--v-type-h1) !important;line-height:var(--v-type-heading-line) !important;}
+.blog-section-title{font-size:var(--v-type-h2) !important;line-height:var(--v-type-heading-line) !important;}
+.blog-card__title{font-size:var(--v-type-h3) !important;line-height:1.6 !important;font-weight:600 !important;}
+.velento-about .about-hero h1,
+.velento-about .about-intro h2,
+.velento-about .about-section-heading h2,
+.velento-about .about-final h2,
+.velento-about .about-quote blockquote{
+    font-size:var(--v-type-h1) !important;
+    line-height:var(--v-type-heading-line) !important;
+    font-weight:700 !important;
+}
+.velento-about .about-value-card h3,
+.velento-about .about-timeline-item h3{font-size:var(--v-type-h3) !important;line-height:1.55 !important;}
+.velento-about .about-intro-copy .about-lead{font-size:var(--v-type-body) !important;line-height:var(--v-type-line) !important;}
+
+/* Account / forms / WooCommerce content. */
+.velento-account-card__title{font-size:var(--v-type-h2) !important;line-height:var(--v-type-heading-line) !important;}
+.velento-account-card__hint,
+.woocommerce form .form-row label,
+.woocommerce form .form-row input,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select,
+.woocommerce table.shop_table,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-error{
+    font-size:var(--v-type-body) !important;
+    line-height:var(--v-type-line) !important;
+}
+
+/* Footer and header text should not visually jump between pages. */
+.site-header,
+.site-footer{
+    font-size:var(--v-type-body);
+}
+.site-footer p,
+.site-footer li,
+.site-footer a{
+    font-size:var(--v-type-small);
+    line-height:1.9;
+}
+
+/* Functional controls stay compact, but share the same font family. */
+button,.button,.btn,input[type="submit"],input[type="button"],select{
+    font-family:"Estedad",sans-serif;
+}
+
+/* Mobile: same hierarchy, simply scaled down once for every page. */
+@media (max-width:700px){
+    :root{
+        --v-type-h1:30px;
+        --v-type-h2:24px;
+        --v-type-h3:17px;
+        --v-type-body:13px;
+        --v-type-small:11px;
+    }
+}
